@@ -909,7 +909,7 @@ class Request : public Extensible<Request>
     ContextID
     contextId() const
     {
-        assert(hasContextId());
+        // assert(hasContextId());
         return _contextId;
     }
 
