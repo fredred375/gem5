@@ -48,9 +48,16 @@ system.cpu = X86O3CPU()
 # Create an L1 instruction and data cache
 system.cpu.icache = L1ICache(args)
 system.cpu.dcache = L1DCache(args)
+system.l2cache = L2Cache(args)
 print(f"L1D size: {system.cpu.dcache.size}")
 print(f"L1D assoc: {system.cpu.dcache.assoc}")
 print(f"L1D response_latency: {system.cpu.dcache.response_latency}")
+print(f"L1I size: {system.cpu.icache.size}")
+print(f"L1I assoc: {system.cpu.icache.assoc}")
+print(f"L1I response_latency: {system.cpu.icache.response_latency}")
+print(f"L2 size: {system.l2cache.size}")
+print(f"L2 assoc: {system.l2cache.assoc}")
+print(f"L2 response_latency: {system.l2cache.response_latency}")
 
 # Connect the instruction and data caches to the CPU
 system.cpu.icache.connectCPU(system.cpu)
