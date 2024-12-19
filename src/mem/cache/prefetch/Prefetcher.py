@@ -164,6 +164,23 @@ class QueuedPrefetcher(BasePrefetcher):
     )
 
 
+class IdealPrefetcher(BasePrefetcher):
+    type = "IdealPrefetcher"
+    cxx_class = "gem5::prefetch::Ideal"
+    cxx_header = "mem/cache/prefetch/ideal.hh"
+
+    # on_inst = False
+    prefetch_on_access = True
+
+    distance = Param.Unsigned(
+        500, "How far ahead of the memory access to start prefetching."
+    )
+
+    prediction_file = Param.String(
+        "./output/prefetch.txt", "File with the prefetch prediction"
+    )
+
+
 class StridePrefetcherHashedSetAssociative(SetAssociative):
     type = "StridePrefetcherHashedSetAssociative"
     cxx_class = "gem5::prefetch::StridePrefetcherHashedSetAssociative"
